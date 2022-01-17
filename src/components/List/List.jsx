@@ -31,9 +31,9 @@ const List = ({ places }) => {
                 </Select>
             </FormControl>
             <Grid container spacing={3} className={classes.list}>
-                {places?.map((place, i) => (
+                {places.filter(place => place.name).map((filteredPlace, i) => (
                     <Grid item key={i} xs={12}>
-                        <PlaceDetails place={place} />
+                        <PlaceDetails place={filteredPlace} />
                     </Grid>
                 ))}
             </Grid>

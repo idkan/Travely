@@ -21,10 +21,7 @@ const App = () => {
 
     useEffect(() => {
         if (bounds) {
-            getPlacesData(bounds.sw, bounds.ne)
-                .then((data) => {
-                    setPlaces(data);
-                });
+            getPlacesData(bounds.sw, bounds.ne).then((data) => { setPlaces(data); });
         }
     }, [coordinates, bounds]);
 
