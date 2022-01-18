@@ -14,6 +14,8 @@ const App = () => {
     const [coordinates, setCoordinates] = useState({});
     const [bounds, setBounds] = useState(null);
 
+    const [isLoading, setIsLoading] = useState(false)
+
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude } }) => {
             setCoordinates({ lat: latitude, lng: longitude });
@@ -21,8 +23,9 @@ const App = () => {
     }, []);
 
     useEffect(() => {
+        setIsLoading(true);
         if (bounds) {
-            getPlacesData(bounds.sw, bounds.ne).then((data) => { setPlaces(data); });
+            getPlacesData(bounds.sw, bounds.ne).then((data) => { setPlaces(data); setIsLoading(false); });
         }
     }, [coordinates, bounds]);
 
@@ -35,6 +38,7 @@ const App = () => {
                     <List
                         places={places}
                         childClicked={childClicked}
+                        isLoading={isLoading}
                     />
                 </Grid>
                 <Grid item xs={12} md={8}>
