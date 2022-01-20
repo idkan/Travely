@@ -40,9 +40,9 @@ const List = ({ places, childClicked, isLoading, type, setType, rating, setRatin
                         </Select>
                     </FormControl>
                     <Grid container spacing={3} className={classes.list}>
-                        {places.filter(place => place.name).map((filteredPlace, i) => (
+                        {places.map((place, i) => (
                             <Grid ref={elRefs[i]} item key={i} xs={12}>
-                                <PlaceDetails selected={Number(childClicked) === i} refProp={elRefs[i]} place={filteredPlace} />
+                                <PlaceDetails selected={Number(childClicked) === i} refProp={elRefs[i]} place={place} />
                             </Grid>
                         ))}
                     </Grid>
