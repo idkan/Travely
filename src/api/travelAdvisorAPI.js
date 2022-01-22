@@ -27,7 +27,7 @@ export const getWeatherData = async (lat, lng) => {
             const { data } = await axios.get('https://community-open-weather-map.p.rapidapi.com/find', {
                 params: { lat, lon: lng },
                 headers: {
-                    'x-rapidapi-key': process.env.REACT_APP_RAPIDAPI_API_KEY,
+
                     'x-rapidapi-host': 'community-open-weather-map.p.rapidapi.com',
                 },
             });
@@ -38,3 +38,21 @@ export const getWeatherData = async (lat, lng) => {
         console.log(error);
     }
 };
+
+export const getAirportData = async (lat, lng) => {
+    try {
+        if (lat && lng) {
+            const { data } = await axios.get('https://aerodatabox.p.rapidapi.com/airports/search/location/51.511142/-0.103869/km/100/16', {
+                params: { withFlightInfoOnly: '0' },
+                headers: {
+                    'x-rapidapi-key': process.env.REACT_APP_RAPIDAPI_API_KEY,
+                    'x-rapidapi-host': 'aerodatabox.p.rapidapi.com'
+                }
+            });
+
+            return data;
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
