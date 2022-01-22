@@ -7,7 +7,7 @@ import Rating from '@material-ui/lab/Rating';
 import mapStyles from './mapStyles';
 import useStyles from './styles.js';
 
-const Map = ({ coords, places, setCoords, setBounds, setChildClicked, weatherData }) => {
+const Map = ({ coords, places, setCoords, setBounds, setChildClicked, weatherData, airportData }) => {
     const matches = useMediaQuery('(min-width:600px)');
     const classes = useStyles();
 
@@ -53,6 +53,12 @@ const Map = ({ coords, places, setCoords, setBounds, setChildClicked, weatherDat
                         <img src={`http://openweathermap.org/img/w/${data.weather[0].icon}.png`} height="70px" alt={data.weather[0].description} />
                     </div>
                 ))}
+                {airportData?.items?.length && weatherData.items.map((data, i) => (
+                    <div key={i} lat={data.location.lat} lng={data.location.lon}>
+                        <img src={'https://cdn.iconscout.com/icon/free/png-256/plane-2359613-1987480.png'} height="70px" alt={data.name} />
+                    </div>
+                ))}
+
             </GoogleMapReact>
         </div>
     );

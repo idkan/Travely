@@ -42,8 +42,8 @@ export const getWeatherData = async (lat, lng) => {
 export const getAirportData = async (lat, lng) => {
     try {
         if (lat && lng) {
-            const { data } = await axios.get('https://aerodatabox.p.rapidapi.com/airports/search/location/51.511142/-0.103869/km/100/16', {
-                params: { withFlightInfoOnly: '0' },
+            const { data } = await axios.get(`https://aerodatabox.p.rapidapi.com/airports/search/location/${lat}/${lng}/km/100/16`, {
+                params: { withFlightInfoOnly: 'true' },
                 headers: {
                     'x-rapidapi-key': process.env.REACT_APP_RAPIDAPI_API_KEY,
                     'x-rapidapi-host': 'aerodatabox.p.rapidapi.com'
