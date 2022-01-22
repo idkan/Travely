@@ -53,12 +53,11 @@ const Map = ({ coords, places, setCoords, setBounds, setChildClicked, weatherDat
                         <img src={`http://openweathermap.org/img/w/${data.weather[0].icon}.png`} height="70px" alt={data.weather[0].description} />
                     </div>
                 ))}
-                {airportData?.items?.length && weatherData.items.map((data, i) => (
+                {airportData?.items?.length && airportData.items.map((data, i) => (
                     <div key={i} lat={data.location.lat} lng={data.location.lon}>
                         <img src={'https://cdn.iconscout.com/icon/free/png-256/plane-2359613-1987480.png'} height="70px" alt={data.name} />
                     </div>
                 ))}
-
             </GoogleMapReact>
         </div>
     );

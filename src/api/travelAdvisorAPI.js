@@ -27,7 +27,7 @@ export const getWeatherData = async (lat, lng) => {
             const { data } = await axios.get('https://community-open-weather-map.p.rapidapi.com/find', {
                 params: { lat, lon: lng },
                 headers: {
-
+                    'x-rapidapi-key': process.env.REACT_APP_RAPIDAPI_API_KEY,
                     'x-rapidapi-host': 'community-open-weather-map.p.rapidapi.com',
                 },
             });
