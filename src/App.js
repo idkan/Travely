@@ -32,7 +32,7 @@ const App = () => {
         const filtered = places.filter((place) => Number(place.rating) > rating);
 
         setFilteredPlaces(filtered);
-    }, [rating]);
+    }, [places, rating]);
 
     useEffect(() => {
         if (bounds) {
@@ -52,7 +52,7 @@ const App = () => {
                     setIsLoading(false);
                 });
         }
-    }, [bounds, type]);
+    }, [bounds, type, coords]);
 
     const onLoad = (autoC) => setAutocomplete(autoC);
 
